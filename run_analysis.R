@@ -1,6 +1,14 @@
 library(reshape)
 
-# read tables
+#download and unzip the database if it's not there yet
+filename <- "dataset.zip"
+fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+if(!file.exists("UCI HAR Dataset")){
+    download.file(fileURL,filename)
+    unzip(filename)
+    }
+
+# read activity labels
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE)
 
 # Get wanted feature and clean names
@@ -32,7 +40,7 @@ names(all_data) <- c("Subject","Activity",features.name)
 all_data$Subject <- factor(all_data$Subject)
 all_data$Activity <- factor(all_data$Activity,levels = activity_labels[,1],labels = activity_labels[,2])
 
-# melt and cast to generate the final tidy data
+# melt and cast to output the final tidy data
 
 mdata <- melt(all_data,id = c("Subject","Activity"))
 tidy_data <- dcast(mdata,Subject + Activity ~ variable, mean)
