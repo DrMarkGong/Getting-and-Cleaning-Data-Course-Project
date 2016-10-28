@@ -1,4 +1,4 @@
-library(reshape)
+library(reshape2)
 
 #download and unzip the database if it's not there yet
 filename <- "dataset.zip"
