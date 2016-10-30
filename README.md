@@ -11,5 +11,5 @@ The R script run_analysis.R will do the followings
 > 4 Clean all the variable names to descriptive ones  
 > 5 melt and cast the dataset and output the final tidy data  
 
-A tidy dataset is stored in tidy_data.txt
+A tidy dataset is stored in tidy_data.txt.  
 The descriptions of variables are stored in the codebook
